@@ -12,6 +12,9 @@ const config = {
             "level":"debug",
             "maxSize":"5m",
             "maxFiles":"100"
+        },
+        "engine":{
+            "score_config_path":"./test_engine_config.json"
         }
     }
 }

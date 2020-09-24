@@ -1,6 +1,7 @@
 //Load config
 const Config = require('./config/config')
 const logger = require('./plugins/logger')
+const cron = require('node-cron')
 
 //Express 
 const express = require('express')
