@@ -1,9 +1,14 @@
 const config = {
     "endpoints":[
         {
-            "name":"Scoreing",
+            "name":"Scoring",
             "route":"/api/scoring",
             "app_path":"./routes/api/scoring"
+        },
+        {
+            "name":"Engine",
+            "route":"/api/engine",
+            "app_path":"./routes/api/engine"
         }
     ],
     "globals":{
