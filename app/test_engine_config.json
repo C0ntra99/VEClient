@@ -1,0 +1,237 @@
+{
+    "name": "test_engine_config.json",
+    "os": "ubuntu",
+    "vulnerabilities": {
+        "User Management" : [
+            {
+                "name" : "Remove Bad User",
+                "fn_name": "Remove_users",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["user01", "user02"]
+            },
+            {
+                "name" : "Add new users",
+                "fn_name" : "Add_users",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["newUser"] 
+            },
+            {
+                "name": "Users required in group",
+                "fn_name":"Req_users_in_sudo",
+                "enabuled":true,
+                "pointValue":10,
+                "parameters":[{"group":"adm","users":["me", "you", "him"]}]
+            },
+            {
+                "name": "Remove user from group",
+                "fn_name":"Remove_user_group",
+                "enabuled":true,
+                "pointValue":10,
+                "parameters":[{"user":"twayne","group":"sudo"}]
+            },
+            {
+                "name": "Add user to group",
+                "fn_name":"Rdd_user_group",
+                "enabuled":true,
+                "pointValue":10,
+                "parameters":[{"user":"twayne", "group":"wheel"}]
+            }
+        ],
+        "Local Policy": [
+            {
+                "name": "Configure light dm",
+                "fn_name":"Secure_lightdm",
+                "enabuled":true,
+                "pointValue":10,
+                "parameters":["allow-guest","greeter-hide-users","greeter-show-manual-login"]
+            },
+            {
+                "name": "Harden Kernel",
+                "fn_name":"Kernel_harden",
+                "enabuled":true,
+                "pointValue":10,
+                "parameters":["BlockModLoading", "DmesgRestrict", "KexecLoadDisabled", "UnprivBpfDisabled", "CoreUsesPid", "CtrlAltDel", "SysRq", "AllRejectAcceptRedirects", "DefRejectAcceptRedirects", "AllDisableAcceptSourceRoute", "DefDisableAcceptSourceRoute", "BootPReplay", "Ipv4Forwarding", "AllLogMartians", "DefLogMartians", "McForwarding", "ProxyArp", "RpFilter", "DisableSendRedirects", "IgnoreIcmpBroadcast", "IgnoreIcmpBogusError", "TcpSynCookies", "TcpTimestamps", "DisableUnprivUserNameSpace"]
+            },
+            {
+                "name":"File contains",
+                "fn_name":"File_now_contains",
+                "enabled":true,
+                "pointValue":10,
+                "parameters":[{"filepath":"/var/spool/cron/crontabs/root","expression":"^0\\s1\\s[*]1\\s[*]1\\s[*]1\\s.*rkhunter.*"}]
+            }
+        ],
+        "Account Policy": [
+            {
+                "name" : "Secure login.defs",
+                "fn_name":"Secure_login_defs",
+                "enabled" : false,
+                "pointValue" : 10,
+                "parameters" : ["PasswordMaxDays","PasswordMinDays","LogUnknownFail"]
+            }
+        ],
+        "Unwated Software" :[
+            {
+                "name" : "Remove Software",
+                "fn_name":"remove_software",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["nmap"]
+            }
+        ],
+        "Defensive Countermeasures":[
+            {
+                "name" : "Enable Firewall",
+                "fn_name":"Firewall_enabled",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : null
+            },
+            {
+                "name": "Firewall rule exists",
+                "fn_name":"Firewall_rules_exists",
+                "enabled":true,
+                "pointValue":10,
+                "parameters":[80, 443]
+            }
+        ],
+        "Application Security":[
+            {
+                "name" : "Secure SSH",
+                "fn_name":"Secure_ssh",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["defaultPortChange", "PermitRootLoginNo", "Protocol2Only", "UsePAMyes", "PermitUserEnvironmentNo","PermitEmptyPasswordsNo"]
+            }
+        ],
+        "Service Auditing":[
+            {
+                "name" : "Running services",
+                "fn_name":"Required_services",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["apache2"]
+            },
+            {
+                "name" : "Prohibited Services",
+                "fn_name":"Prohibited_services",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["mysql"]
+            }
+        ],
+        "OS Update":[
+            {
+                "name" : "Update Settings",
+                "fn_name":"Update_settings",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["installSecUpdates", "checkDaily", "downloadSecUpdates", "notifyForLTS", "mainRepoEnabled"]
+            }
+        ],
+        "OS Setting":[
+            {
+                "name" : "Permission change",
+                "fn_name":"Perm_no_longer_equal",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : [{"filepath":"/etc/shadow", "permisions":"777"}]
+            },
+            {
+                "name" : "Permission qual",
+                "fn_name":"Perm_now_equal_to",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : [{"filepath":"/etc/shadow", "permisions":"777"}]
+            }
+        ],
+        "Password Policy" : [
+            {
+                "name" : "Maximum Passowrd Age",
+                "fn_name":"max_pwd_age",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : null
+            },
+            {
+                "name" : "Minimum Password Age",
+                "fn_name":"min_pwd_age",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : null
+            },
+            {
+                "name" : "Password History",
+                "fn_name":"Check_history",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : 5
+            }
+        ],
+        "Policy Violation" : [
+            {
+                "name" : "Remove media files",
+                "fn_name":"remove_media",
+                "enabled" : true,
+                "pointValue" : 5,
+                "parameters" : ["/home/exampleUser/music/bad.mp3"]
+                
+            }
+            
+        ],
+        "Access Control and Settings" : [
+            {
+                "name" : "SSH Root login Disabled",
+                "fn_name":"ssh_root_dis",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : null
+            }
+        ],
+        "Updates" : [
+            {
+                "name" : "Update Kernel",
+                "fn_name":"kern_update",
+                "enabled" :  true,
+                "pointValue" : 5,
+                "parameters" : null
+            },
+            {
+                "name" : "Check for automatic update",
+                "fn_name" : "auto_update",
+                "enabled" : true,
+                "pointValue" : 5,
+                "parameters" : null
+            }
+        ],
+        "Insecure Services" : [
+            {
+                "name" : "Disable anon ftp login",
+                "fn_name": "anon_ftp",
+                "enabled" : false,
+                "pointValue" : 10,
+                "parameters" : null
+            }
+        ],
+        "Malware" : [
+            {
+                "name" : "Remove backdoor",
+                "fn_name": "rm_backdoor",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["/var/log/misc/backdoor.php"]
+            }
+        ],
+        "Forensics Questions" : [
+            {
+                "name" : "Forensics question 1",
+                "fn_name":null,
+                "enabled" : true,
+                "pointValue" : 10,
+                "question" : "How much wood did a wood chuck chuck?",
+                "answer" : "5"
+            }
+        ]
+    }
+}
