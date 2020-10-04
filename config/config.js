@@ -20,6 +20,10 @@ const config = {
         },
         "engine":{
             "score_config_path":"./test_engine_config.json"
+        },
+        "VEClient":{
+            "team":null,
+            "instance_uid":""
         }
     }
 }

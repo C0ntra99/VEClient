@@ -1,0 +1,22 @@
+{
+    "name":"Name of engine temnplate",
+    "os":"What os is this template for",
+    "vulnerabilities":{
+        "User Management":[
+            {
+                "name" : "Remove Bad User",
+                "fn_name": "Remove_users",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["user01", "user02"]
+            },
+            {
+                "name" : "Add new users",
+                "fn_name" : "Add_users",
+                "enabled" : true,
+                "pointValue" : 10,
+                "parameters" : ["newUser"] 
+            }
+        ]
+    }
+}

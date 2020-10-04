@@ -1,5 +1,5 @@
 function Remove_users() {
-    return "Remove_users"
+    return true
 }
 
 module.exports = Remove_users

@@ -2,6 +2,8 @@ const axios = require('axios');
 const fs = require('fs');
 const {v4: uuid} = require('uuid')
 const Instance_schema = require('../models/Instance');
+const config = require('../../config/config')
+
 class Engine_helper {
     async register_instance(req) {
         return new Promise((resolve, reject) => {
@@ -35,13 +37,24 @@ class Engine_helper {
                 //pull server hostname/address from config
                 axios.post('http://localhost:8080/api/instance', new_instance)
                 .then((resp) => {
-                    if(resp.status !== 200){
-                        return resolve({status:300, message: resp.message})
+                    //console.log(resp)
+                    if(resp.data.status !== 200){
+                        return resolve({status:300, message: resp.data.message})
                     }
-                        return resolve({status:200, message:resp.message})
+            
+                        config.globals.VEClient.instance_uid = resp.data.uid
+                        fs.writeFileSync('etc/VEClient.conf', JSON.stringify(config.globals.VEClient), (err) => {
+                            if(err){
+                                console.log(err)
+                            }
+                            
+                        })
+                        return resolve({status:200, message:resp.data.message})
+                        
                 })
                 .catch((resp) => {
-                    return resolve({status:500, message: resp.message})
+                    console.log(resp)
+                    return resolve({status:500, message: resp.data.message})
                 })
             });
 
